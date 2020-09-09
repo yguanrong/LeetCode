@@ -23,7 +23,7 @@
     
     模板：
     
-    _${question.content}
+    ${question.content}
     
      package leetcode.editor.cn;
      public class NO${question.frontendQuestionId}_$!velocityTool.camelCaseName(${question.titleSlug}) {
@@ -33,4 +33,4 @@
          }
          
          ${question.code}
-     }_
+     }
