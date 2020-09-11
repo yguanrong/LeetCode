@@ -43,7 +43,14 @@ public class NO6_ZigzagConversion {
 //        Solution solution =
                 new NO6_ZigzagConversion().new Solution().convert("AB",1);
     }
-    
+
+    /**
+     * 1）首先要把行数等于的区分出来，行数等于1的直接输出即可。
+     * 2）使用桶结构来解决这个问题。新建一个List<Character>[]数组，数组大小为行数。
+     * 3）遍历字符串，按照顺序分别把字符放入到list数组中去，
+     * 最后一次输出list数组
+     *
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String convert(String s, int numRows) {

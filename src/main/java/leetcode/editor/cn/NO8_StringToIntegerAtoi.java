@@ -16,7 +16,7 @@
 //
 // 
 // 本题中的空白字符只包括空格字符 ' ' 。 
-// 假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231, 231 − 1]。如果数值超过这个范围，请返回 INT_MAX (231
+// 假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−2^31, 2^31 − 1]。如果数值超过这个范围，请返回 INT_MAX (231
 // − 1) 或 INT_MIN (−231) 。 
 // 
 //
@@ -67,7 +67,16 @@ public class NO8_StringToIntegerAtoi {
 //        Solution solution =
                 new NO8_StringToIntegerAtoi().new Solution().myAtoi("9223372036854775808");
     }
-    
+
+    /**
+     * 题目要求已经讲得很清晰了：
+     *  过滤掉不是数字的字符。
+     *
+     *  这里有个坑就是数据溢出问题，最大是：Integer.MAX_VALUE，最小是：Integer.MIN_VALUE
+     *  这里需要把String先转成long型的整数。但是long型的最大值是19位以9开头的数字，
+     *  所以为了防止报错，先判断String长度是否大于19，如果大于19就算溢出，返回0
+     *
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int myAtoi(String str) {

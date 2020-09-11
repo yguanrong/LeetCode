@@ -36,7 +36,14 @@ public class NO347_TopKFrequentElements {
         int[] a = {1,1,1,2,2,3};
         new NO347_TopKFrequentElements().new Solution().topKFrequent(a,2);
     }
-    
+
+    /**
+     * 1）遍历nums数组，把数字当做key，出现次数当做value存入map
+     * 2）新建一个list数组，大小为nums.length+1，
+     * 3）遍历map集合，把value当做list数组的下标，把map的可以存入list对象中，
+     * 如： list[3] = new ArrayList();  list[3].add(5);表示5这个数字出现了3次
+     *
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {

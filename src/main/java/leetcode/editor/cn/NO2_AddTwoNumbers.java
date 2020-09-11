@@ -37,7 +37,11 @@ public class NO2_AddTwoNumbers {
         Solution solution=
                 new NO2_AddTwoNumbers().new Solution();
     }
-    
+
+    /**
+     * 相加之后，逆序输出，其实并不难，难点在于，可能会有数字超过long的最大值表示范围，
+     * 这里需要使用 BigInteger 类来做数据的加减乘除法
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 //
 //      Definition for singly-linked list.

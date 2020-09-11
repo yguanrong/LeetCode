@@ -24,7 +24,13 @@ public class NO1_TwoSum {
     public static void main(String[] args) {
         Solution solution = new NO1_TwoSum().new Solution();
     }
-    
+
+    /**
+     * 思路：
+     * 把每一位数的补数放到一个map集合的key中，然后遍历数组，
+     * 判断map中是否存在数组中的该值，如果存在，那么将其下标取出返回
+     */
+
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {

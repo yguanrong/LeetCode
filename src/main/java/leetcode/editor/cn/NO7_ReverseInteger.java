@@ -20,7 +20,7 @@
 //
 // 注意: 
 //
-// 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231, 231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。 
+// 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−2^31, 2^31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
 // Related Topics 数学 
 // 👍 2169 👎 0
 
@@ -32,7 +32,14 @@ public class NO7_ReverseInteger {
     public static void main(String[] args) {
         Solution solution = new NO7_ReverseInteger().new Solution();
     }
-    
+
+    /**
+     * 需要分三种情况考虑，当 0<=x<10 时，直接返回x
+     * 1）、当x大于10时，返回对while循环，对x取余，把余数append放到StringBuilder中，
+     * 然后让x = x/10.
+     * 最后把StringBuilder转成long，判断是否大于Integer.MAX_VALUE，若大于就溢出了
+     * 2）负数也是一样的。
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int reverse(int x) {

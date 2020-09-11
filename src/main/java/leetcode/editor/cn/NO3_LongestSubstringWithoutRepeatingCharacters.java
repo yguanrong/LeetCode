@@ -35,7 +35,15 @@ public class NO3_LongestSubstringWithoutRepeatingCharacters {
         Solution solution =
                 new NO3_LongestSubstringWithoutRepeatingCharacters().new Solution();
     }
-    
+
+    /**
+     * 遍历一遍字符串，然后把字符放到一个map集合中，
+     * 新建一个数组，大小为字符串长度加一。改数组的下标就是不重复字符的长度。
+     * 利用map集合key的唯一性
+     * 当下次再遇到该值时说明遇到重复字符了，就把map的大小作为数组下标给数组赋值为1，。然后清空map，指针移到下一个字符开始遍历
+     * 最后从下标最大的地方开始遍历数组，如果值等于1，就输出该数组下标
+     *
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {

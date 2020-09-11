@@ -22,7 +22,10 @@ public class NO5_LongestPalindromicSubstring {
         Solution solution =
                 new NO5_LongestPalindromicSubstring().new Solution();
     }
-    
+
+    /**
+     * 回文串分两种，一种是单个中心的，还有一种是双中心的。双中心的任取其左右一个来分析即可
+     */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
         String max = "";
