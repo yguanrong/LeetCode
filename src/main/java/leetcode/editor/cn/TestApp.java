@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author ：ygr
@@ -12,33 +13,26 @@ import java.nio.channels.FileChannel;
 
 public class TestApp {
     public static void main(String[] args) {
-        try {
-            long start = System.currentTimeMillis();
-            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-
-            FileInputStream inputStream = new FileInputStream("D:\\谷歌浏览器下载\\apache-jmeter-5.2.1.zip");
-            FileChannel inChannel = inputStream.getChannel();
-
-            FileOutputStream outputStream = new FileOutputStream("D:\\file\\image\\garbage\\apache-jmeter-5.2.1.zip");
-            FileChannel outChannel = outputStream.getChannel();
-
-            int length = inChannel.read(byteBuffer);
-            while (length != -1){
-                byteBuffer.flip();//读取模式转换写入模式
-                outChannel.write(byteBuffer);
-                byteBuffer.clear(); //清空缓存，等待下次写入
-                // 再次读取文本内容
-                length = inChannel.read(byteBuffer);
-            }
-            long end = System.currentTimeMillis();
-            System.out.println("end = " + (end-start));
-            outputStream.close();
-            outChannel.close();
-            inputStream.close();
-            inChannel.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        AtomicDemo ad = new AtomicDemo();
+        for (int i = 0; i < 10; i++) {
+            new Thread(ad).start();
         }
     }
+}
 
+class AtomicDemo implements Runnable{
+    //	private volatile int serialNumber = 0;
+    private AtomicInteger serialNumber = new AtomicInteger(0);
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+        System.out.print(getSerialNumber()+" ");
+    }
+    public int getSerialNumber(){
+        return serialNumber.getAndIncrement();
+    }
 }
